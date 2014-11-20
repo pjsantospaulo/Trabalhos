@@ -1,0 +1,62 @@
+﻿@{
+    var db = Database.Open("SistemaCMS");
+    var consulta = db.Query("SELECT * FROM PAGINAS");
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <title>Rondonia Noticias</title>
+        <script type="text/javascript" src="script.js"></script>
+        <style>
+         body {
+                margin: 0 auto 0 300px;
+                padding: 25px  0;
+                background-color: #f5f5f5;
+                color: #999;
+                border: 100px;
+            }
+            
+            ul{
+                list-style: none;
+            }
+            ul li{
+                float: left;
+            }
+            ul li a{
+                display: block;
+                height: 30px;
+                padding: 0  30px;
+                font-size: 14px;
+                text-align: center;
+                font-weight: bold;
+                line-height: 30px;
+                color: #999;
+                text-decoration: none;
+                margin-right: -50px;
+            }
+            div{
+                display: block;
+                height: 500px;
+                width: 600px;
+                display: block;
+                padding: 50px 100px;
+                background-color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            @foreach(var pagina in consulta){
+                <li><a class="conteudo" href="Conteudo?id=@pagina.id">@pagina.titulo &nbsp |</a></li>
+            }
+        </ul>
+        <br />
+        <br />
+        <br />
+        <div id="conteudo-detalhe">
+        </div>
+
+    </body>
+</html>

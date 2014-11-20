@@ -1,0 +1,33 @@
+﻿@{
+   var id = Request.QueryString["id"];
+   var db = Database.Open("SistemaCMS") ;
+   var pagina = db.QuerySingle("SELECT * FROM PAGINAS WHERE ID = "+id);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <table>
+            <tfoot>
+            <tr>
+                <td>Autor: @pagina.autor</td>
+            </tr>
+            <tr>
+                <td>Publicação: @pagina.dtPublicacao</td>
+            </tr>
+           </tfoot>
+            <tbody>
+            <tr>
+                <td>@pagina.titulo</td>
+            </tr>
+            <tr>
+                <td>@pagina.conteudo</td>
+            </tr>
+           </tbody>
+        </table>
+    </body>
+</html>
